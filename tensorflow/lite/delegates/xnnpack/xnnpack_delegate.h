@@ -25,7 +25,7 @@ extern "C" {
 typedef struct {
   // Number of threads to use in the thread pool.
   // 0 or negative value means no thread pool used.
-  int32_t num_threads;
+  int32_t num_threads = 4;
 } TfLiteXNNPackDelegateOptions;
 
 // Returns a structure with the default XNNPack delegate options.

@@ -47,12 +47,10 @@ class Delegate {
 
  public:
   explicit Delegate(const TfLiteXNNPackDelegateOptions* options) {
-#if !defined(__EMSCRIPTEN__) || defined(__EMSCRIPTEN_PTHREADS__)
     if (options != nullptr && options->num_threads > 1) {
       threadpool_.reset(
           pthreadpool_create(static_cast<size_t>(options->num_threads)));
     }
-#endif
     TFLITE_LOG_PROD_ONCE(tflite::TFLITE_LOG_INFO,
                          "Created TensorFlow Lite XNNPACK delegate for CPU.");
   }
